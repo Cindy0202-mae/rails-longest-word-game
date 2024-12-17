@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>Longest Word Game</h1>
+  <div class="letters">
+    <p> <%= @message %> </p>
+    <p>Your score: </p>
+    <p><%= @score %></p>
+  </div>
+  <div class="link">
+  <%= link_to 'New game', new_path, class: "btn btn-primary"%>
+  </div>
+</div>
