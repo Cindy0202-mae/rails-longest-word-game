@@ -14,7 +14,10 @@ class GamesController < ApplicationController
     @included = included?(@word, @letters)
     @valid_word = valid_word?(@word)
 
-    if @included && @valid_word
+    if @word.length == 1
+      @message = "Sorry but #{@word} does not seem to be a valid English word..."
+      @score = 0
+    elsif @included && @valid_word
       @message = "Congratulations! #{@word} is a valid English word!"
       @score = @word.length
     elsif @included
@@ -33,7 +36,8 @@ class GamesController < ApplicationController
   private
   def valid_word?(word)
     url = "https://dictionary.lewagon.com/#{word}"
-    @response = URI.parse(url).read
-    @response['found']
+    response = URI.open(url).read
+    json = JSON.parse(response)
+    json['found']
   end
 end

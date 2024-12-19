@@ -1,9 +1,11 @@
 <div class="container">
   <h1>Longest Word Game</h1>
   <div class="letters">
-    <% @letters.each do |letter| %>
-      <span class="letter"><%= letter %></span>
-    <% end %>
+    <ul>
+      <% @letters.each do |letter| %>
+        <li><span class="letter"><%= letter %></span></li>
+      <% end %>
+    </ul>
   </div>
   <div class="form-container">
     <form action="score" method="POST" data-turbo="false">
